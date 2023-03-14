@@ -5,27 +5,50 @@ using UnityEngine.UI;
 
 public class Controller : MonoBehaviour
 {
-    int R, G, B;
+    float R, G, B;
 
     public Text RedText, GreenText, BlueText;
+
+    public GameObject[] Buttons;
 
 
     public void RedSliderValue(Slider valRed)
     {
         RedText.text = valRed.value.ToString();
-        Debug.Log(valRed.value);
+        R = valRed.value;
+
 
     }
 
     public void GreenSliderValue(Slider valGreen)
     {
         GreenText.text = valGreen.value.ToString();
-        Debug.Log(valGreen.value);
+        G = valGreen.value;
     }
     public void BlueSliderValue(Slider valBlue)
     {
         BlueText.text = valBlue.value.ToString();
-        Debug.Log(valBlue.value);
+        B = valBlue.value;
+    }
+
+
+    public void ValUpdate()
+    {
+        foreach (var item in Buttons)
+        {
+            if(item.transform.GetChild(0).gameObject.activeSelf == true)
+            {
+                item.transform.GetChild(0).GetComponent<Image>().color = new Color(R / 100, G / 100, B / 100);
+            }
+            
+
+        }
+        Debug.Log("Red: " + R + " Blue: " + B + " Green:" + G);
+       
+    }
+
+    public void ValSave()
+    {
 
     }
 
