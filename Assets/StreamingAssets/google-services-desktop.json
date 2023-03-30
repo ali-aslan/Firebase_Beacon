@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "436367665531",
+    "firebase_url": "https://beacondb-4fef6-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "beacondb-4fef6",
+    "storage_bucket": "beacondb-4fef6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436367665531:android:f4489918baac2744f8f5de",
+        "android_client_info": {
+          "package_name": "com.ASLANdev.Firebase_Beacon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436367665531-csd8bdifocptkvr35pjf44qhbnvafbkq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw14jA_YLOh7cc2mKC-Z8ghlRCXkCU37Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436367665531-csd8bdifocptkvr35pjf44qhbnvafbkq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
