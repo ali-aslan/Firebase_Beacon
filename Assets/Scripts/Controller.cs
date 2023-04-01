@@ -7,9 +7,9 @@ using Firebase.Database;
 
 public class Controller : MonoBehaviour
 {
-    float R, G, B;
+    float R, G, B, D;
 
-    public Text RedText, GreenText, BlueText;
+    public Text RedText, GreenText, BlueText, DelayText;
 
     public GameObject[] Buttons;
 
@@ -19,8 +19,6 @@ public class Controller : MonoBehaviour
     {
         MyDBreference = FirebaseDatabase.DefaultInstance.RootReference;
     }
-
-
     public void RedSliderValue(Slider valRed)
     {
         RedText.text = valRed.value.ToString();
@@ -38,6 +36,37 @@ public class Controller : MonoBehaviour
         B = valBlue.value;
     }
 
+    public void DelaySliderValue(Slider valDelay)
+    {
+        DelayText.text = valDelay.value.ToString();
+        D = valDelay.value*100;
+    }
+
+
+    public void ActiveAll()
+    {
+        foreach(GameObject buttons in Buttons)
+        {
+            buttons.transform.GetChild(0).gameObject.SetActive(true);
+        }
+
+    }
+    public void PassiveAll()
+    {
+        foreach (GameObject buttons in Buttons)
+        {
+            buttons.transform.GetChild(0).gameObject.SetActive(false);
+        }
+
+    }
+
+
+
+
+
+
+
+
     List<int> index = new List<int>();
     public void ValUpdate()
     {
@@ -47,15 +76,17 @@ public class Controller : MonoBehaviour
             if (Buttons[i].transform.GetChild(0).gameObject.activeSelf == true)
                 index.Add(i);
 
+        if (index.Count < 1) return;
+
         for (int i = index[0]; i <= index[index.Count - 1]; i++)
         {
             Buttons[i].transform.GetChild(0).gameObject.SetActive(true);
             Buttons[i].transform.GetChild(0).GetComponent<Image>().color = new Color(R / 100, G / 100, B / 100);
         }
 
-        Debug.Log("Red: " + R + " Blue: " + B + " Green:" + G + " firstIndex: "+ index[0] + " lastIndex: "+ index[index.Count - 1]);
+        Debug.Log("Red: " + R + " Blue: " + B + " Green:" + G + " DelayTime:" + D + " firstIndex: " + index[0] + " lastIndex: " + index[index.Count - 1]);
 
-        WritetoDB((int)R, (int)B,(int)G,100,index[0],index[index.Count - 1]);
+        WritetoDB((int)R, (int)B, (int)G, (int)D, index[0], index[index.Count - 1]);
 
     }
 
